@@ -1,0 +1,890 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux | JadeのBlog</title><meta name="keywords" content="学习笔记"><meta name="author" content="Jade"><meta name="copyright" content="Jade"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="https://jadexl.github.io/2023/03/21/Linux/index.html">
+<meta property="og:site_name" content="JadeのBlog">
+<meta property="og:description" content="Linux基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jadexl.github.io/img/%E5%86%9C%E7%94%B0.jpg">
+<meta property="article:published_time" content="2023-03-21T02:30:49.000Z">
+<meta property="article:modified_time" content="2023-03-21T02:03:44.649Z">
+<meta property="article:author" content="Jade">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jadexl.github.io/img/%E5%86%9C%E7%94%B0.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jadexl.github.io/2023/03/21/Linux/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":500,"languages":{"author":"作者: Jade","link":"链接: ","source":"来源: JadeのBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-21 10:03:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/%E5%A4%B4%E5%83%8F.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/%E5%86%9C%E7%94%B0.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">JadeのBlog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-21T02:30:49.000Z" title="发表于 2023-03-21 10:30:49">2023-03-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-21T02:03:44.649Z" title="更新于 2023-03-21 10:03:44">2023-03-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
+<h1 id="Linux部分"><a href="#Linux部分" class="headerlink" title="Linux部分"></a>Linux部分</h1><p>操作系统也是一个软件，这个软件封装了很多的功能来操作电脑。</p>
+<p>没有操作系统的电脑就是死机器，毫无用处。</p>
+<p><code>windows</code>有很多弊端，性能不稳定，收费，等等</p>
+<p>有些项目要永久运行，那么就要求操作系统稳定运行，且不能关机</p>
+<p>所以需要学习<code>linux</code></p>
+<p>好处如下：</p>
+<ol>
+<li><p>稳定</p>
+</li>
+<li><p>开源，免费</p>
+</li>
+<li><p>多用户多任务</p>
+<p>同一时间段，windows只能同一时间同一个用户使用</p>
+</li>
+</ol>
+<p>windows 好处是用户量大，应用很多</p>
+<p><code>linux</code>主要就是用于开发</p>
+<p>实际开发中，我们的服务器（高性能电脑，上面运行着项目）上大部分都是<strong>linux</strong>操作系统</p>
+<h2 id="虚拟机软件"><a href="#虚拟机软件" class="headerlink" title="虚拟机软件"></a>虚拟机软件</h2><p>这是一个软件，可以在本电脑上虚拟出一台电脑。这台虚拟的电脑就是一台裸机，可以在这个虚拟机软件里面装操作系统。</p>
+<p>常用的虚拟机软件 <strong>VMWare</strong>，<strong>VirtualBox</strong></p>
+<p><strong>虚拟机软件</strong>：就是一个能够虚拟出来计算机的软件。</p>
+<p><strong>虚拟机</strong>：被虚拟机软件虚拟出来的电脑。模拟一台真实的电脑。</p>
+<h2 id="学习Linux必须要知道的事"><a href="#学习Linux必须要知道的事" class="headerlink" title="学习Linux必须要知道的事"></a>学习Linux必须要知道的事</h2><ul>
+<li>千万细心</li>
+<li>linux删除无法复原</li>
+<li>严格区分大小写</li>
+<li>linux不需要拓展名</li>
+<li>没有盘符，所有文件都在/根目录之下</li>
+<li><strong>linux</strong>支持多用户同时操作</li>
+</ul>
+<h2 id="linux下重要的目录"><a href="#linux下重要的目录" class="headerlink" title="linux下重要的目录"></a>linux下重要的目录</h2><p><code>/</code>根目录：所有的文件都在这个目录之下</p>
+<p><code>/home</code>家目录：每个用户都会在<code>/home</code>里面有一个文件夹，这个文件夹就是这个用户的，每一个用户都会在这目录里有一个和自己的用户名同名的文件夹</p>
+<p><code>/root:linux</code>有一个超级用户，具备所有的权限，大部分情况下不建议直接使用root用户，所以<code>ubuntu</code>的设置就是让你创建一个用户</p>
+<h2 id="查看目录的命令"><a href="#查看目录的命令" class="headerlink" title="查看目录的命令"></a>查看目录的命令</h2><h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令:"></a><code>ls</code>命令:</h3><p>查看当前目录的一些信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -l: 以列表的方式展示相关的信息</span><br><span class="line">ls -a: 显示隐藏的文件和隐藏的目录</span><br><span class="line">ll : 比较常用,以列表的方式,展示文件的相关信息</span><br></pre></td></tr></table></figure>
+<p>如果文件名或者目录名是<code>.名字</code>,默认是隐藏看不到的</p>
+<p>可以连续使用</p>
+<h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a><strong>pwd</strong></h3><p>查看当前的所在位置（即当前的路径）</p>
+<p>默认每次登录后，都在 <strong>/home/账号名</strong>里面</p>
+<p>类似每次登录windows都在桌面。</p>
+<h3 id="clear"><a href="#clear" class="headerlink" title="clear"></a>clear</h3><p>清除终端的内容</p>
+<p>快捷操作：<code>ctrl</code>+<code>l</code>=clear</p>
+<h2 id="切换目录的命令"><a href="#切换目录的命令" class="headerlink" title="切换目录的命令"></a>切换目录的命令</h2><p><strong>cd命令</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cd+路径</td>
+<td>切换到cd后面的路径中去</td>
+</tr>
+<tr>
+<td>cd ~</td>
+<td>切换到当前用户的家目录中（中间有空格）</td>
+</tr>
+<tr>
+<td>cd .</td>
+<td>切换到当前目录（没有任何意义）</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>切换到上一级的目录</td>
+</tr>
+<tr>
+<td>cd -</td>
+<td>切换到上一次的目录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意</strong>：</p>
+<ul>
+<li><code>cd</code>目录必须是存在的，不存在就会报错</li>
+</ul>
+<h2 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a><strong>绝对路径和相对路径</strong></h2><p>绝对路劲：从<code>/</code>根目录开始算起的路径叫做绝对路径</p>
+<p>相对路径：从当前目录算起的路径叫做相对路径</p>
+<h2 id="创建文件的命令"><a href="#创建文件的命令" class="headerlink" title="创建文件的命令"></a>创建文件的命令</h2><h3 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a><code>touch</code>命令</h3><p>touch + 文件命</p>
+<h3 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h3><p><code>mkdir</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">创建文件夹使用的命令</span><br><span class="line">mkdir 目录名</span><br></pre></td></tr></table></figure>
+<p>如果已经存在，则会报错</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir 路径</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">表示创建这个路径的目录,但是有个问题,如果这个路径中有路径不存在</span></span><br><span class="line">mkdir -p 路径</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果路径中不存在的部分,会自动帮你创建</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除空目录"><a href="#删除空目录" class="headerlink" title="删除空目录"></a>删除空目录</h3><p><code>rmdir</code></p>
+<p>用法同上</p>
+<ul>
+<li>没有的目录不能删除</li>
+<li>有内容的也不能删除</li>
+</ul>
+<h2 id="删除命令"><a href="#删除命令" class="headerlink" title="删除命令"></a>删除命令</h2><p><code>rm</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm 路径</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除这个路径的文件或者空目录</span></span><br><span class="line">rm -d 路径 # 删除这个路径的空目录</span><br><span class="line">rm -i 路径 # 给出一个交互的提示</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">危险的选项</span></span><br><span class="line">rm -r 路径 # 表示队规删除,如果这个路径有东西,一起删了</span><br><span class="line">rm -f 路径# 强制删除 一个不存在的路径去删除会报错,但是加了个-f就不会报错了</span><br><span class="line">rm -rf 路径 # 这个表示,将这个路径里面的东西彻底全部删除</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有一条命令绝对不能执行</span></span><br><span class="line">rm -rf /</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除所有根目录下面的内容</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>不存在的文件删不了</strong><br><strong>不是空目录删不了</strong></p>
+<h2 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h2><h3 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a><code>cp</code>命令</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp file1or空目录 file2</span><br><span class="line">将文件1复制到名为file2的文件中</span><br><span class="line">如果要复制整体</span><br><span class="line">cp -r 要复制的文件夹名字 复制到的路径</span><br></pre></td></tr></table></figure>
+<h2 id="移动文件或者目录"><a href="#移动文件或者目录" class="headerlink" title="移动文件或者目录"></a>移动文件或者目录</h2><p><code>mv</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mv 文件 路径文件夹（如果要在移动后更改名字，file/name)</span><br><span class="line">重命名：</span><br><span class="line">mv file1 file2</span><br></pre></td></tr></table></figure>
+<h2 id="终端命令的格式"><a href="#终端命令的格式" class="headerlink" title="终端命令的格式"></a>终端命令的格式</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">命令 [参数] [选项]</span><br></pre></td></tr></table></figure>
+<h2 id="查看帮助的命令"><a href="#查看帮助的命令" class="headerlink" title="查看帮助的命令"></a>查看帮助的命令</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">命令 --help</span><br><span class="line">例如:</span><br><span class="line">ls --help</span><br></pre></td></tr></table></figure>
+<h2 id="重定向命令"><a href="#重定向命令" class="headerlink" title="重定向命令"></a>重定向命令</h2><p>重定向也被称为输出重定向，将在终端中执行的命令结果保存在一份文件中</p>
+<p>有两个选项：</p>
+<ul>
+<li><code>&gt;</code>：如果文件存在，就会覆盖原来的内容，类似于稳健操作中的 <strong>w</strong>方式</li>
+<li><code>&gt;&gt;</code>:类似于 <strong>a</strong></li>
+</ul>
+<p>在linux中 ctrl+c表示停止继续往下运行这条命令</p>
+<p>取而代之的是ctrl+shift+c</p>
+<h2 id="查看文件的命令"><a href="#查看文件的命令" class="headerlink" title="查看文件的命令"></a>查看文件的命令</h2><p>cat 查看小型文件的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat 文件的名字</span><br><span class="line"># 例如：表示 查看info.txt 这份文件</span><br><span class="line">zhang@zhang-virtual-machine:~$ pwd &gt;&gt; info.txt</span><br><span class="line">zhang@zhang-virtual-machine:~$ cat info.txt</span><br><span class="line">/home/zhang</span><br><span class="line"># 支持同时查看多份文件,每份文件用空格隔开即可</span><br><span class="line"># cat 文件1 文件2 文件3</span><br><span class="line"></span><br><span class="line"># cat 文件1 文件2 &gt; 文件3</span><br><span class="line"># 表示将文件1和2都写入到3</span><br></pre></td></tr></table></figure>
+<p><code>more</code>分屏命令</p>
+<p>当查看的内容很多的时候,一屏显示不完,我们就可以用这个命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># more 文件</span><br><span class="line"># 用分屏的方式来展示文件的内容</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空格键</td>
+<td>显示下一屏</td>
+</tr>
+<tr>
+<td>回车键</td>
+<td>显示下一行</td>
+</tr>
+<tr>
+<td>b</td>
+<td>显示上一屏</td>
+</tr>
+<tr>
+<td>f</td>
+<td>显示下一屏</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p><code>gedit 文件</code>:表示用编辑工具打开文件 (只能在linux中使用,不能再shell中使用)实际开发中的Linux都是无桌面的</p>
+<h2 id="管道命令"><a href="#管道命令" class="headerlink" title="管道命令"></a>管道命令</h2><p>管道: 一个命令的输出可以通过管道作为另外一个命令的输入,可以理解成一个容器 , 一般是配合more进行使用的,主要用来分屏展示内容的</p>
+<p>命令1 输出 | 命令 输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls | more </span><br><span class="line"># 在终端中分屏展示文件信息</span><br></pre></td></tr></table></figure>
+<h2 id="链接相关的命令"><a href="#链接相关的命令" class="headerlink" title="链接相关的命令"></a>链接相关的命令</h2><p><code>linux</code>中分为两种链接</p>
+<ul>
+<li><p>软链接: 类似于<code>windows</code>的快捷方式,常用于 一份目录路径比较长的文件,这时可以创建一个快捷方式,快速打开他; 源文件删除了,软链接也失效</p>
+</li>
+<li><p>语法格式为:</p>
+</li>
+<li><p>```<br>ln -s 路径    这个软连接的名字</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- 注意事项:</span><br><span class="line"></span><br><span class="line">  1. 如果软连接和源文件不在同一个目录,源文件必须写绝对路径,不能用相对路径的形式</span><br><span class="line">  2. 删除源文件则软连接失效</span><br><span class="line">  3. 可以给目录创建软链接</span><br><span class="line"></span><br><span class="line">- 硬链接:类似于源文件的别名, 源文件删除,硬链接还在</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>ln 源文件的路径 这个硬链接的名字</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">注意:</span><br><span class="line"></span><br><span class="line">1. 创建硬链接推荐使用绝对路径</span><br><span class="line">2. 删除源文件,硬链接还能使用</span><br><span class="line">3. 不能给目录加硬链接</span><br><span class="line">4. 硬链接的主要作用是防止重要文件被误删</span><br><span class="line"></span><br><span class="line">## 文本搜索命令</span><br><span class="line"></span><br><span class="line">**grep**进行文本搜索</span><br><span class="line"></span><br><span class="line">搭配几个选项	甚至还能搭配正则表达式</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">grep &#x27;&#x27; 文件</span><br><span class="line">grep &#x27;&#x27; 文件 -i	-n 	-v</span><br><span class="line">-i 表示 根据&#x27;&#x27;里面的筛选以什么开头</span><br><span class="line">-n 同上 但是限制大小写</span><br><span class="line">-v 表示除了以什么开头的其余内容</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>正则表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘^*’</td>
+<td>指定以*字符开头</td>
+</tr>
+<tr>
+<td>‘*$’</td>
+<td>指定以*字符结尾</td>
+</tr>
+<tr>
+<td>‘A..E’</td>
+<td>指定A开头,E结尾</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="查找文件命令"><a href="#查找文件命令" class="headerlink" title="查找文件命令"></a>查找文件命令</h2><p><code>find</code>:在指定目录下查找文件(目录)</p>
+<p>搭配一个选项<code>-name</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">find -name &#x27;要查找的名字&#x27;	路径</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在路径下面查找对应名字的文件或者目录</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以搭配通配符使用</p>
+<ul>
+<li><code>*</code>:替代一个或多个任意字符</li>
+<li><code>?</code>:代表任意的一个字符</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">find / -name &#x27;*.txt&#x27;# 表示查找出根目录下所有以txt结尾的文件或目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">拓展:* ? 在find命令中必须结合引号包裹,其实这两个通配符还可以结合其他命令一起使用</span><br></pre></td></tr></table></figure>
+<h2 id="压缩命令"><a href="#压缩命令" class="headerlink" title="压缩命令"></a>压缩命令</h2><p><code>Linux</code>默认支持的压缩格式</p>
+<ul>
+<li><code>.gz</code></li>
+<li><code>.bz2</code></li>
+<li><code>.zip</code></li>
+</ul>
+<p>说明</p>
+<ul>
+<li><code>.gz</code>和<code>.bz2</code>的压缩包需要<code>tar</code>命令来压缩和解压缩</li>
+<li><code>.zip</code>的压缩包需要使用<code>zip</code>命令来压缩,使用<code>unzip</code>命令来解压缩</li>
+<li>在<code>Linux</code>中常用的是<code>.gz</code></li>
+<li>压缩的目的是: 节省磁盘空间</li>
+</ul>
+<h3 id="tar命令"><a href="#tar命令" class="headerlink" title="tar命令"></a><code>tar</code>命令</h3><p>tar命令用来压缩和解压缩</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>创建打包文件</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示打包或者解包的详细信息</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>指定文件名称,必须放在所有选项后面</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>压缩或者解压缩(<code>.gz</code>)</td>
+</tr>
+<tr>
+<td>-j</td>
+<td>压缩或者解压缩(<code>.bz2</code>)</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>解包</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>解压缩到指定目录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">压缩成bz2</span><br><span class="line">tar -jcvf 压缩后的名字.bz2 要压缩的文件或者目录</span><br><span class="line">压缩成tar.gz</span><br><span class="line">tar -zcvf 压缩后的名字.tar.gz 要压缩的文件或者目录</span><br></pre></td></tr></table></figure>
+<h3 id="解压缩相关"><a href="#解压缩相关" class="headerlink" title="解压缩相关"></a>解压缩相关</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解压缩tar.gz的</span></span><br><span class="line">tar -zxvf 要解压的tar.gz的名字	# 默认会解压到当前目录</span><br><span class="line">tar -zxvf 要解压的tar.gz的名字 -C 目标路径	# 解压到指定路径</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解压缩bz2的</span></span><br><span class="line">tar -jxvf 要解压的名字.bz2</span><br><span class="line">tar -jxvf 要解压的名字.bz2 -C 指定的路径	# 同上</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="zip和unzip命令"><a href="#zip和unzip命令" class="headerlink" title="zip和unzip命令"></a><strong>zip</strong>和<strong>unzip</strong>命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zip</td>
+<td>压缩成.zip格式的文件</td>
+</tr>
+<tr>
+<td>unzip</td>
+<td>解压缩</td>
+</tr>
+<tr>
+<td><strong>选项</strong></td>
+<td><strong>说明</strong></td>
+</tr>
+<tr>
+<td>-d</td>
+<td>解压缩到指定目录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">压缩成zip包</span></span><br><span class="line">zip 压缩后的名字.zip 要压缩的文件</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解压缩zip包</span></span><br><span class="line">unzip 要解压的zip</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定解压</span></span><br><span class="line">unzip 要解压的zip -d 路径</span><br></pre></td></tr></table></figure>
+<p>总结:</p>
+<p>在<code>Linux</code>中,压缩文件尽量使用tar.gz的格式,因为占用空间少</p>
+<p>使用<code>zip</code>操作简单,但是占用空间较多</p>
+<h1 id="Linux相关指令"><a href="#Linux相关指令" class="headerlink" title="Linux相关指令"></a>Linux相关指令</h1><h2 id="获取管理员权限的命令"><a href="#获取管理员权限的命令" class="headerlink" title="获取管理员权限的命令"></a>获取管理员权限的命令</h2><p>为什么要获取管理员权限，因为管理员权限是最高的，普通用户的权限是有限的,默认用户只能操作自己的文件夹,需要切换到root用户才能操作其他的文件夹</p>
+<h2 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a><code>sudo</code>命令</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sudo -s</td>
+<td>切换到<code>root</code>用户,获取管理员权限</td>
+</tr>
+<tr>
+<td>sudo</td>
+<td>某个命令的执行需要获取管理员权限,可以在执行命令之前加上sudo</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>每一个用户 所有的操作 都是有记录 的</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">history	可以查看历史上敲过的命令</span><br><span class="line">root 用户的 家目录 在 /root</span><br><span class="line">sudo 你要执行的命令</span><br><span class="line">exg:</span><br><span class="line">	sudo touch /1.txt</span><br></pre></td></tr></table></figure>
+<p>两种方式的区别</p>
+<ul>
+<li>sudo -s 表示切换到root</li>
+<li>sudo+命令 表示临时借用root的权限,只有这一条命令,使用root的权限</li>
+</ul>
+<h2 id="whoami命令的使用"><a href="#whoami命令的使用" class="headerlink" title="whoami命令的使用"></a><code>whoami</code>命令的使用</h2><p><code>whoami</code>:查看当前用户是谁</p>
+<h2 id="exit-命令的使用"><a href="#exit-命令的使用" class="headerlink" title="exit 命令的使用"></a><code>exit</code> 命令的使用</h2><p><code>exit</code>可以退出当前账户</p>
+<p>如果是多账户状态,退出一个账户会把另一个顶上去</p>
+<h2 id="who命令的使用"><a href="#who命令的使用" class="headerlink" title="who命令的使用"></a><code>who</code>命令的使用</h2><p>查看所有登陆的用户</p>
+<h2 id="passwd命令的使用"><a href="#passwd命令的使用" class="headerlink" title="passwd命令的使用"></a><code>passwd</code>命令的使用</h2><p>修改用户的密码,如果不指定用户的话,默认表示修改当前登录用户的密码 .</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">passwd</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">提示先输入原来的密码</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示 输入新的密码,确认密码	不能太简单</span></span><br></pre></td></tr></table></figure>
+<h2 id="which命令的作用"><a href="#which命令的作用" class="headerlink" title="which命令的作用"></a><code>which</code>命令的作用</h2><p>查看命令的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">which pwd</span><br></pre></td></tr></table></figure>
+<h2 id="关机和重启命令"><a href="#关机和重启命令" class="headerlink" title="关机和重启命令"></a>关机和重启命令</h2><p>重启一瞬间,服务器是关闭状态,会影响业务</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shutdown -h now</code></td>
+<td>立即关机</td>
+</tr>
+<tr>
+<td><code>reboot</code></td>
+<td>重启</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo useradd -m 用户名		# 创建用户</span><br><span class="line">sudo passwd 用户名		# 给用户创建密码</span><br><span class="line"></span><br><span class="line">或者先切换到	sudo -s</span><br><span class="line">就不需要每次都	sudo 再执行了</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-m</code></td>
+<td>自动创建用户家目录,家目录的名字就是用户名</td>
+</tr>
+<tr>
+<td><code>-g</code></td>
+<td>指定用户所属的用户组,默认不指定地滑就会自动创建一个同名的用户组</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意</strong>:创建用户 必须要root的权限</p>
+<h2 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h2><p>大部分教程说的是<code>su</code>用户名,严格上一定要用    <code>su - 用户名</code></p>
+<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo userdel -r 用户名	 # 将这个用户和此用户的文件一起删除</span><br></pre></td></tr></table></figure>
+<h2 id="修改用户信息"><a href="#修改用户信息" class="headerlink" title="修改用户信息"></a>修改用户信息</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-G</code></td>
+<td>新增一个组</td>
+</tr>
+<tr>
+<td><code>-g</code></td>
+<td>修改组</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>修改用户的用户组</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo usermod -G 用户组名字 当前用户名</span><br><span class="line">sudo usermod -g	当前组名	要修改到的组名</span><br></pre></td></tr></table></figure>
+<h2 id="用户组相关"><a href="#用户组相关" class="headerlink" title="用户组相关"></a>用户组相关</h2><p>创建用户组</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo groupadd 组名	# 创建一个用户组</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建用户并指定用户组</span></span><br><span class="line">sudo useradd -mg 组名 用户名</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除用户组</span></span><br><span class="line">sudo groupdel 组名</span><br></pre></td></tr></table></figure>
+<h2 id="文件权限相关"><a href="#文件权限相关" class="headerlink" title="文件权限相关"></a>文件权限相关</h2><h3 id="Linux的宗旨-一切皆文件"><a href="#Linux的宗旨-一切皆文件" class="headerlink" title="Linux的宗旨: 一切皆文件"></a><code>Linux</code>的宗旨: 一切皆文件</h3><ul>
+<li>读</li>
+<li>写</li>
+<li>执行</li>
+<li>没有权限</li>
+</ul>
+<h3 id="linux都有哪些角色"><a href="#linux都有哪些角色" class="headerlink" title="linux都有哪些角色"></a><code>linux</code>都有哪些角色</h3><ul>
+<li>文件的所有者,拥有者</li>
+<li>组内成员</li>
+<li>其他成员</li>
+</ul>
+<h3 id="修改权限有两种方法"><a href="#修改权限有两种方法" class="headerlink" title="修改权限有两种方法"></a>修改权限有两种方法</h3><ol>
+<li>字母法</li>
+<li>数字法</li>
+</ol>
+<h4 id="字母法"><a href="#字母法" class="headerlink" title="字母法"></a>字母法</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>u</code></td>
+<td><code>user</code>,文件所有者</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td><code>group</code>,所有者的用户组的成员</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td><code>other</code>,这个用户组以外的人员</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td><code>all</code>,表示所有用户</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>权限设置说明</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>增加权限</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>撤销权限</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>设置权限</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>权限的说明</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code></td>
+<td>读</td>
+</tr>
+<tr>
+<td>w</td>
+<td>写</td>
+</tr>
+<tr>
+<td>x</td>
+<td>执行权限</td>
+</tr>
+<tr>
+<td>-</td>
+<td>无任何权限</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">drwxrwxr-x 2 laoyang laoyang 4096 12月 21 21:21 test/</span><br><span class="line">表示</span><br><span class="line">d: 表示是目录,如果是- 那就是文件</span><br><span class="line">第一个`rwx`表示文件所有者的权限,意味着具备所有权限</span><br><span class="line">第二个rwx 表示文件所有者用户组的权限</span><br><span class="line">第三个r-x 表示其他成员只具备读和执行的权限</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 例如我要给test 目录的所有者设置读和写和执行的权限, 给组内成员没有权限,给其他成员没有权限</span><br><span class="line">chmod u=rwx,g=-,o=- test</span><br></pre></td></tr></table></figure>
+<h4 id="数字法"><a href="#数字法" class="headerlink" title="数字法"></a>数字法</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code></td>
+<td>读;值=4</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>写;值=2</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>可执行;值=1</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>无权限;值=0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod 777 test</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">表示<span class="built_in">test</span>权限全部公开</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><p>​    </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install 你要安装的软件名字</span><br><span class="line">sudo apt-get install 你要安装的软件 -y	# 不再询问</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如</span></span><br><span class="line">sudo apt-get install tree</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">卸载软件</span></span><br><span class="line">sudo apt-get remove tree</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新源	更新软件</span></span><br><span class="line">sudo apt-get updata </span><br></pre></td></tr></table></figure>
+<h1 id="编辑文件"><a href="#编辑文件" class="headerlink" title="编辑文件"></a>编辑文件</h1><p>先安装vim</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
+<h2 id="vim的使用"><a href="#vim的使用" class="headerlink" title="vim的使用"></a>vim的使用</h2><p>vim有三种模式</p>
+<ol>
+<li>命令模式</li>
+<li>编辑模式</li>
+<li>末行模式</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">命令模式</span><br><span class="line">	任何时候,不管用户在什么模式,按下esc就能进入命令模式,可以在命令模式下输入命令,来操作文件输入模式</span><br><span class="line">	</span><br><span class="line">输入模式</span><br><span class="line">	在命令模式下输入对应的命令,可以进入输入模式,可以编辑文件</span><br><span class="line"></span><br><span class="line">末行模式</span><br><span class="line">	在命令模式下,按下&#x27; : &#x27; 就可以进入末行模式,等待用户输入命令,可以管理文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim 文件名 # 表示要操作这个文件</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">敲下i 表示可以编辑文件了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">写完内容后,按esc键,可以进入命令模式</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按下:后,敲<span class="string">&#x27;x&#x27;</span>表示保存文件,敲<span class="string">&#x27;q!&#x27;</span>表示不保存,直接退出</span></span><br></pre></td></tr></table></figure>
+<p>对某份文件内容做一点小的修改,可以用vim</p>
+<p>最好的修改文件内容的方式是利用编辑器来写,类似于pycharm</p>
+<p>所以在自己的电脑上改好文件,上传到Linux</p>
+<p>默认linux不能远程链接,现在的命令都是在虚拟机里面敲击的</p>
+<h2 id="ssh命令"><a href="#ssh命令" class="headerlink" title="ssh命令"></a><code>ssh</code>命令</h2><p>要想使用ssh,必须先安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install  openssh-server</span><br></pre></td></tr></table></figure>
+<p>安装好了之后就可以通过ssh命令进行远程操作</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh 你的Linux的用户名@你的ip地址</span><br></pre></td></tr></table></figure>
+<h2 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a><code>scp</code>命令</h2><p>用来将Linux和你电脑上的文件互传的</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将本地文件上传到指定的Linux路径下</span></span><br><span class="line">scp 本地文件(如果是目录要在前面加-r) 远程linux用户名@ip地址:要将文件放到哪里</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将Linux指定的路径的文件下载到自己的电脑之上</span></span><br><span class="line">scp -r 远程linux用户名@ip地址</span><br></pre></td></tr></table></figure>
+<p>可以用工具来替代,例如FinalShell</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">快速总结</span><br><span class="line">1 Linux的几个基本知识</span><br><span class="line">	严格区分大小写</span><br><span class="line">	一切皆文件</span><br><span class="line">	所有的文件都在/目录下</span><br><span class="line">	root是超级管理员,具备的所有的权限</span><br><span class="line">2 掌握的命令</span><br><span class="line">	cd 相关的</span><br><span class="line">	pwd 查看此时的路径</span><br><span class="line">	ls 查看下属文件</span><br><span class="line">	ll 详细文件</span><br><span class="line">	mkdir -r 生成路径和文件</span><br><span class="line">	touch 创建文件或者目录</span><br><span class="line">	cat 读取文件内部数据</span><br><span class="line">	more 分屏显示</span><br><span class="line">	rm 删除文件或者空目录</span><br><span class="line">	mv 移动文件</span><br><span class="line">	cp 复制文件</span><br><span class="line">	sudo 赋予权限</span><br><span class="line">	sudo apt-get install 软件名</span><br><span class="line">	finalshell</span><br></pre></td></tr></table></figure>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">为什么要有数据库</span><br><span class="line">	数据库就是用来存取数据</span><br><span class="line">想要存储数据，数据都能保存在哪里</span><br><span class="line">	外存可以永久的保存数据</span><br><span class="line">	内存也可以存储数据，只不过临时保存</span><br><span class="line">内存和外村的区别</span><br><span class="line">	1.内存只能临时存储，断电就会丢失	好处是：快</span><br><span class="line">	2.外存可以永久存储数据，断电不丢失	好处是：永久</span><br><span class="line"></span><br><span class="line">数据库的分类：</span><br><span class="line">	1.关系型数据库	MySQL	本质 Excel表 本质上是文件  存在外存中</span><br><span class="line">	2.非关系型数据库	</span><br></pre></td></tr></table></figure>
+<h2 id="nosql"><a href="#nosql" class="headerlink" title="nosql"></a>nosql</h2><p>nosql-&gt; <code>not only sql</code>    不仅仅是<code>sql</code>，只是mysql的辅助</p>
+<p>当有海量数据的时候，MySQL有性能瓶颈，查询需要时间，查询条件越复杂，时间越长。</p>
+<h3 id="关系型和非关系型的区别"><a href="#关系型和非关系型的区别" class="headerlink" title="关系型和非关系型的区别"></a>关系型和非关系型的区别</h3><ul>
+<li>关系型数据库大部分以表格的形式来存储，保存的是有关联的数据</li>
+<li>非关系型数据库，保存都是无关联的数据，数据的存储方式通常是以<code>k-v</code>键值对的形式</li>
+<li><strong>关系型数据库</strong>适用于一些比较复杂的数据</li>
+<li><strong>非关系型数据库</strong>适用于比较简单的数据</li>
+<li>关系型数据库支持事务，非关系型基本不支持事务</li>
+<li>关系型数据库有大概统一的一些规范，例如<code>sql</code>语句，非关系型不遵守sql规则，每一个产品都有自己的语法</li>
+</ul>
+<p>非关系型数据库中的佼佼者就是 <strong>redis</strong></p>
+<h2 id="Redis都有哪些特性"><a href="#Redis都有哪些特性" class="headerlink" title="Redis都有哪些特性"></a>Redis都有哪些特性</h2><ul>
+<li>性能极佳，查询数据的速度是110000次/s，写的速度是81000次/s</li>
+<li>丰富的数据类型</li>
+<li>可以做到持久化，不只是存在内存中，避免断电就丢失数据的现象</li>
+</ul>
+<h2 id="redis常用的使用场景"><a href="#redis常用的使用场景" class="headerlink" title="redis常用的使用场景"></a><strong>redis</strong>常用的使用场景</h2><ul>
+<li><code>session</code>共享</li>
+<li>热点数据，比如抢购</li>
+</ul>
+<h2 id="使用Redis"><a href="#使用Redis" class="headerlink" title="使用Redis"></a>使用Redis</h2><h3 id="安装Redis"><a href="#安装Redis" class="headerlink" title="安装Redis"></a>安装Redis</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">仅限Linux安装</span><br><span class="line">sudo apt-get install redis-server</span><br></pre></td></tr></table></figure>
+<h3 id="配置相关信息"><a href="#配置相关信息" class="headerlink" title="配置相关信息"></a>配置相关信息</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+<p>配置相关信息之前，为了避免万一配错了改不了，需要先备份，万一改错了还有办法改回来</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo cp /etc/redis/redis.conf /etc/redis/redis_bak.conf</span><br></pre></td></tr></table></figure>
+<p>操作redis.conf进行修改</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim redis.conf</span><br><span class="line">507行 将requirepass前面的&#x27;#&#x27;删除 将后面的东西换成自己的密码。</span><br><span class="line">69行 将bind 127.0.0.1前面加&#x27;#&#x27;号 注释起来</span><br><span class="line">88行 将protected_mode后面的&#x27;yes&#x27;改成&#x27;no&#x27;</span><br><span class="line">接下来重启`redis`</span><br><span class="line">sudo service redis restart</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动Redis</span></span><br><span class="line">sudo service redis start</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭Redis</span></span><br><span class="line">sudo service redis stop</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看Redis状态</span></span><br><span class="line">sudo service redis status</span><br></pre></td></tr></table></figure>
+<h3 id="使用redis"><a href="#使用redis" class="headerlink" title="使用redis"></a>使用redis</h3><p>登录redis</p>
+<p>命令为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli</span><br></pre></td></tr></table></figure>
+<p>登录redis的命令有三个选项</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-h</td>
+<td>后面加IP地址，默认的IP地址是<code>127.0.0.1</code></td>
+</tr>
+<tr>
+<td>-p</td>
+<td>后面加端口 默认的端口是6379</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>后面加密码</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如果你的 <strong>redis</strong>已经设置密码，但是不加密码也能登录且不报错，这样做不了任何的事情</p>
+<p><strong>登录指令：</strong><code>auth password</code></p>
+<p>登陆成功之后就可以使用了</p>
+<p><code>但是正常的登录应该是，在登录时就输入密码</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\a1203&gt;ssh zhang@192.168.246.128</span><br><span class="line">zhang@192.168.246.128&#x27;s password:</span><br><span class="line"></span><br><span class="line">Your Hardware Enablement Stack (HWE) is supported until April 2025.</span><br><span class="line">Last login: Sat Feb  4 17:45:43 2023 from 192.168.246.1</span><br><span class="line">zhang@zhang-virtual-machine:~$ redis-cli -h 192.168.246.128 -p 6379 -a 123456</span><br><span class="line">Warning: Using a password with &#x27;-a&#x27; or &#x27;-u&#x27; option on the command line interface may not be safe.</span><br><span class="line">192.168.246.128:6379&gt; ping</span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
+<p>注意：Redis不区分大小写</p>
+<p>mysql可以自己创建数据库，Redis没有，但是Redis自带16个库，默认一进来就是0号库</p>
+<p><code>select nummber</code>    # 选择仓库</p>
+<h3 id="keys"><a href="#keys" class="headerlink" title="keys *"></a><code>keys *</code></h3><p>表示查看当前这个库里面的所有的键值对</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">192.168.246.128:6379&gt; keys *</span><br><span class="line">(empty list or set)</span><br></pre></td></tr></table></figure>
+<p>实际上,最好不要用这个命令, 因为在实际开发中,Redis会存很多数据,你这条命令会大量的耗费</p>
+<h2 id="基本的数据类型"><a href="#基本的数据类型" class="headerlink" title="基本的数据类型"></a>基本的数据类型</h2><ul>
+<li><strong>string</strong> (最常用,基本上我们对redis的操作,他占了90%以上)</li>
+<li><strong>list</strong></li>
+<li><strong>hash</strong></li>
+<li><strong>set</strong></li>
+<li><strong>zset</strong></li>
+</ul>
+<p>Redis使用<code>k-v</code>键值对的形式保存数据的,所以这里的数据类型指的是value的数据类型,同一个库中<code>k</code>键的名字不能重复，单个的value不能超过512M</p>
+<h3 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a><code>string</code>类型</h3><h4 id="设置键值对"><a href="#设置键值对" class="headerlink" title="设置键值对"></a>设置键值对</h4><p>语法为：</p>
+<p><code>set 键名 数据</code>    (如果存在就修改，不存在就创建)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">    192.168.246.128:6379&gt; ping</span><br><span class="line">    PONG</span><br><span class="line">    192.168.246.128:6379&gt; set a b</span><br><span class="line">    OK</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建一个键值对的同时设置过期时间</span></span><br><span class="line">    192.168.246.128:6379&gt; setex b 5 bbbb</span><br><span class="line">    OK</span><br><span class="line">    192.168.246.128:6379&gt; get b</span><br><span class="line">    &quot;bbbb&quot;</span><br><span class="line">    192.168.246.128:6379&gt; get b</span><br><span class="line">    (nil)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">可以同时设置多个键值对</span></span><br><span class="line">mset 键1 值1 键2 值2 键3 值3</span><br><span class="line">    192.168.246.128:6379&gt; mset a 1 b 2 c 3</span><br><span class="line">    OK</span><br><span class="line">    192.168.246.128:6379&gt; keys *</span><br><span class="line">    1) &quot;c&quot;</span><br><span class="line">    2) &quot;a&quot;</span><br><span class="line">    3) &quot;b&quot;</span><br><span class="line">    192.168.246.128:6379&gt; get a</span><br><span class="line">    &quot;1&quot;</span><br><span class="line">    192.168.246.128:6379&gt; get b</span><br><span class="line">    &quot;2&quot;</span><br><span class="line">    192.168.246.128:6379&gt; get c</span><br><span class="line">    &quot;3&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">给一个值追加数据</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">append 键 要追加的值</span></span><br><span class="line">例如 </span><br><span class="line">	append a a1</span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">有则追加，无则创建</span></span><br></pre></td></tr></table></figure>
+<p><strong>获取数据</strong></p>
+<p><code>get</code>键</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">根据键获取值，不存在返回nil</span></span><br><span class="line">    192.168.246.128:6379&gt; get a</span><br><span class="line">    &quot;b&quot;</span><br><span class="line">    192.168.246.128:6379&gt; get p</span><br><span class="line">    (nil)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同时获取多个值 mset a b c</span></span><br><span class="line">    192.168.246.128:6379&gt; mget a b c</span><br><span class="line">    1) &quot;15ppp&quot;</span><br><span class="line">    2) &quot;2&quot;</span><br><span class="line">    3) &quot;3&quot;</span><br></pre></td></tr></table></figure>
+<p>扩展</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">incr 键 表示给这个键自增1</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">incrby 键 数字	表示一次性增加多少</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">decr 键 表示给这个键自减1</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">decrby 键 数字	表示一次性减少多少</span></span><br><span class="line">    192.168.246.128:6379&gt; get c</span><br><span class="line">    &quot;3&quot;</span><br><span class="line">    192.168.246.128:6379&gt; incr c</span><br><span class="line">    (integer) 4</span><br><span class="line">    192.168.246.128:6379&gt; decr c</span><br><span class="line">    (integer) 3</span><br><span class="line">    192.168.246.128:6379&gt; incrby c 5</span><br><span class="line">    192.168.246.128:6379&gt; get c</span><br><span class="line">    &quot;8&quot;</span><br><span class="line">    192.168.246.128:6379&gt; decrby c 4</span><br><span class="line">    (integer) 4</span><br><span class="line">    192.168.246.128:6379&gt; get c</span><br><span class="line">    &quot;4&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>数字也属于字符串</strong></p>
+<h3 id="和键相关的命令"><a href="#和键相关的命令" class="headerlink" title="和键相关的命令"></a>和键相关的命令</h3><h4 id="查看所有键"><a href="#查看所有键" class="headerlink" title="查看所有键"></a><strong>查看所有键</strong></h4><p><code>keys *</code></p>
+<p>keys 后面可以支持正则表达式</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">192.168.246.128:6379&gt; keys *</span><br><span class="line">1) &quot;c&quot;</span><br><span class="line">2) &quot;a&quot;</span><br><span class="line">3) &quot;b&quot;</span><br><span class="line"></span><br><span class="line">192.168.246.128:6379&gt; keys a*</span><br><span class="line">1) &quot;a&quot;</span><br></pre></td></tr></table></figure>
+<p>判断某个键是否存在，存在返回1 不存在返回0</p>
+<p><code>exists 键</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">192.168.246.128:6379&gt; exists a</span><br><span class="line">(integer) 1</span><br><span class="line">192.168.246.128:6379&gt; exists 5</span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure>
+<h4 id="查看键对应的数据类型"><a href="#查看键对应的数据类型" class="headerlink" title="查看键对应的数据类型"></a>查看键对应的数据类型</h4><p><code>type 键</code></p>
+<p>可以得到键的数据类型是什么，不存在就返回 <strong>none</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">192.168.246.128:6379&gt; type a</span><br><span class="line">string</span><br><span class="line">192.168.246.128:6379&gt; type c</span><br><span class="line">string</span><br></pre></td></tr></table></figure>
+<h4 id="删除键"><a href="#删除键" class="headerlink" title="删除键"></a>删除键</h4><p><code>del</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">192.168.246.128:6379&gt; del b</span><br><span class="line">(integer) 1</span><br><span class="line">192.168.246.128:6379&gt; keys *</span><br><span class="line">1) &quot;c&quot;</span><br><span class="line">2) &quot;a&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">支持同时删除多个 del a b c</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置一个键的过期时间"><a href="#设置一个键的过期时间" class="headerlink" title="设置一个键的过期时间"></a>设置一个键的过期时间</h4><ul>
+<li><strong>以秒为单位</strong></li>
+<li>如果一个键没有设置过期时间，就表示永久存在，除非删除</li>
+</ul>
+<p><code>expire 键 时间秒数</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">192.168.246.128:6379&gt; set p 99</span><br><span class="line">OK</span><br><span class="line">192.168.246.128:6379&gt; get p</span><br><span class="line">&quot;99&quot;</span><br><span class="line">192.168.246.128:6379&gt; expire p 10</span><br><span class="line">(integer) 1</span><br><span class="line">192.168.246.128:6379&gt; get p</span><br><span class="line">&quot;99&quot;</span><br><span class="line">192.168.246.128:6379&gt; get p</span><br><span class="line">&quot;99&quot;</span><br><span class="line">192.168.246.128:6379&gt; get p</span><br><span class="line">(nil)</span><br></pre></td></tr></table></figure>
+<p><code>ttl 键</code>    查询剩余时间</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">192.168.246.128:6379&gt; set p 99</span><br><span class="line">OK</span><br><span class="line">192.168.246.128:6379&gt; expire p 10</span><br><span class="line">(integer) 1</span><br><span class="line">192.168.246.128:6379&gt; ttl p</span><br><span class="line">(integer) 8</span><br><span class="line">192.168.246.128:6379&gt; ttl p</span><br><span class="line">(integer) 3</span><br><span class="line">192.168.246.128:6379&gt; ttl p</span><br><span class="line">(integer) -2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-1 表示永久存在</li>
+<li>-2 表示已经过期</li>
+</ul>
+<h3 id="list数据类型"><a href="#list数据类型" class="headerlink" title="list数据类型"></a>list数据类型</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">增加数据</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">从左侧插入数据</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">lpush 键名 值1 值2 值3</span></span><br><span class="line">192.168.246.128:6379&gt; lpush alist 1 2 3</span><br><span class="line">(integer) 3</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">lrange 键名 起始位置 结束位置</span></span><br><span class="line">192.168.246.128:6379&gt; lrange alist 0 -1</span><br><span class="line">1) &quot;3&quot;</span><br><span class="line">2) &quot;2&quot;</span><br><span class="line">3) &quot;1&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">从右侧插入数据</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">rpush 键名 值1 值2 值3</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在指定的元素之前插入新元素</span></span><br><span class="line">linsert 键 before 现有的元素的值 要插入的新元素</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在指定的元素之后插入新元素</span></span><br><span class="line">linsert 键 after 现有的元素的值 要插入的新元素</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改指定的索引位置的值</span></span><br><span class="line">192.168.246.128:6379&gt; lset alist 0 666</span><br><span class="line">OK</span><br><span class="line">192.168.246.128:6379&gt; lrange alist 0 -1</span><br><span class="line">1) &quot;666&quot;</span><br><span class="line">2) &quot;2&quot;</span><br><span class="line">3) &quot;1&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除指定元素</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">lrem 键名 count value</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将列表中前 count 次出现的值为value的元素移除</span></span><br><span class="line">192.168.246.128:6379&gt; lrem alist 1 666</span><br><span class="line">(integer) 1</span><br><span class="line">192.168.246.128:6379&gt; lrange alist 0 -1</span><br><span class="line">1) &quot;2&quot;</span><br><span class="line">2) &quot;1&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">count &gt; 0 表示从左往右移除</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">count &lt; 0 表示从右往左移除</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">count = 0 表示全部移除</span></span><br></pre></td></tr></table></figure>
+<h1 id="The-final-day—Redis-相关知识"><a href="#The-final-day—Redis-相关知识" class="headerlink" title="The final day—Redis 相关知识"></a>The final day—Redis 相关知识</h1><p><code>redis</code>是属于<code>nosql</code>的产品, 常用于做高速缓存，<code>session</code>共享等，解决海量数据的性能问题，作为<code>mysql</code>的辅助，一些简单的数据可以存储在<code>redis</code>中</p>
+<h4 id="安装-Redis"><a href="#安装-Redis" class="headerlink" title="安装 Redis"></a>安装 <strong>Redis</strong></h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install redis-server</span><br></pre></td></tr></table></figure>
+<p>不考虑windows安装；<code>redis</code>是 <strong>cs</strong>架构，是意大利人用C语言发明的，单线程的，默认端口是6379 默认支持将数据备份到文件中，即数据持久化。</p>
+<h4 id="对-Redis的配置"><a href="#对-Redis的配置" class="headerlink" title="对 Redis的配置"></a>对 <strong>Redis</strong>的配置</h4><p>配置文件在<code>/etc/redis/redis.conf</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">先拷贝一份作为备份</span><br><span class="line">sudo cp /etc/redis/redis.conf /etc/redis/redis_bak.conf</span><br><span class="line">接下来进行操作：</span><br><span class="line">sudo vim redis.conf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">接下来配置密码，避免隐患</span></span><br><span class="line">507行 将requirepass前面的&#x27;#&#x27;删除 将后面的东西换成自己的密码。</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置远程连接 因为默认只能在本地访问</span></span><br><span class="line">69行 将bind 127.0.0.1前面加&#x27;#&#x27;号 注释起来</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭保护模式</span></span><br><span class="line">88行 将protected_mode后面的&#x27;yes&#x27;改成&#x27;no&#x27;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拓展 大约在136行 有的版本默认是no 需要改成<span class="built_in">yes</span></span></span><br><span class="line">daemonize yes</span><br><span class="line"></span><br><span class="line">接下来重启`redis`</span><br></pre></td></tr></table></figure>
+<h4 id="和redis服务端相关的命令"><a href="#和redis服务端相关的命令" class="headerlink" title="和redis服务端相关的命令"></a>和<code>redis</code><strong>服务端相关的命令</strong></h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo service redis start</span><br><span class="line">sudo service redis stop</span><br><span class="line">sudo service redis restart</span><br><span class="line">sudo service redis status</span><br></pre></td></tr></table></figure>
+<h4 id="登录Redis"><a href="#登录Redis" class="headerlink" title="登录Redis"></a><strong>登录</strong>Redis</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">redis-cli</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">完整语法为</span></span><br><span class="line">redis-cli -h IP地址 -p 6379 -a 密码</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-h 默认是127.0.0.1</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-p 默认是6379</span></span><br></pre></td></tr></table></figure>
+<h4 id="Redis的基础知识"><a href="#Redis的基础知识" class="headerlink" title="Redis的基础知识"></a>Redis<strong>的基础知识</strong></h4><ul>
+<li><p>如何测试redis已经成功链接</p>
+<p>​    输入 <strong>ping</strong>，得到一个 <strong>pong</strong></p>
+</li>
+<li><p>退出redis命令：</p>
+<p>​    <strong>quit</strong>/<strong>exit</strong></p>
+</li>
+<li><p>redis 默认有16个库，从0-15</p>
+</li>
+<li><p>Redis 都是以 <strong>k-v</strong>键值对的形式保存，有五种基本数据类型</p>
+</li>
+</ul>
+<h4 id="Redis-的键相关的命令"><a href="#Redis-的键相关的命令" class="headerlink" title="Redis 的键相关的命令"></a>Redis 的键相关的命令</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、查看当前库里面的所有的键</span></span><br><span class="line">keys *</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在真实环境中不建议使用，性能消耗太大</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、查看某个键是否存在</span></span><br><span class="line">exists 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3、查看键是什么数据类型</span></span><br><span class="line">type 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4、删除指定的键</span></span><br><span class="line">del 键</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拓展	<span class="built_in">unlink</span> 键 也可以删除</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5、设置键的过期时间	单位为秒数</span></span><br><span class="line">expire 键 时间/秒数</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6、查看过期时间	结果为还有多少秒	永不过期为-1，已经过期为-2</span></span><br><span class="line">ttl 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7、切换数据库</span></span><br><span class="line">select 对应数据库的数字</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">8、查看当前数据库中键的数量</span></span><br><span class="line">dbsize	无参数</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">9、清空当前库（慎重操作）</span></span><br><span class="line">flushdb</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">10、清空所有库（不要操作）</span></span><br><span class="line">flushall</span><br></pre></td></tr></table></figure>
+<h4 id="Redis2对数据类型的相关操作"><a href="#Redis2对数据类型的相关操作" class="headerlink" title="Redis2对数据类型的相关操作"></a>Redis2对数据类型的相关操作</h4><p>Redis都是采取<code>k-v</code>键值对的形式来存储数据的，所有的数据类型都是值的value的数据类型</p>
+<p>redis一个库中，<strong>键名不可以重复</strong></p>
+<h5 id="Redis耳朵五大基本数据类型"><a href="#Redis耳朵五大基本数据类型" class="headerlink" title="Redis耳朵五大基本数据类型"></a>Redis耳朵五大基本数据类型</h5><ol>
+<li>string</li>
+<li>list</li>
+<li>hash</li>
+<li>set</li>
+<li>zset</li>
+</ol>
+<h5 id="string相关的操作"><a href="#string相关的操作" class="headerlink" title="string相关的操作"></a>string相关的操作</h5><p>Redis中最基本的，最常用的数据类型，一个<strong>value</strong>最大可以达到<strong>512M</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、设置值 如果键不存在就新增，如果存在就修改</span></span><br><span class="line">set 键 值</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、获取键对应的值 如果存在就获取对应的值，不存在就nil</span></span><br><span class="line">get 键</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3、追加值</span></span><br><span class="line">append 键 要追加的值</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4、自增 如果键是数字	就每执行一次命令 就自增1</span></span><br><span class="line">incr 键</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5、自增指定的数</span></span><br><span class="line">incrby 键 数</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6、自减</span> </span><br><span class="line">decr 键</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7、自减指定的数</span></span><br><span class="line">decrby 键 数</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">8、获取键的长度</span></span><br><span class="line">strlen 键</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">9、只有键不存在的时候才能设置</span></span><br><span class="line">setnx 键 值</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">10、同时设置/获取多个键值</span></span><br><span class="line">mset 键1 值1 键2 值2	</span><br><span class="line">mget 键1 值1 键2 值2</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">11、只有都不存在的时候才能成功设置</span></span><br><span class="line">msetnx 键1 值1 键2 值2</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">12、区间取键值</span></span><br><span class="line">getrange 键 start end</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">13、以新换旧值，同时输出旧的值。</span></span><br><span class="line">getset 键 值</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">14、设置一个键值对的时候同时设置过期时间。</span></span><br><span class="line">setex 键 秒数 值</span><br></pre></td></tr></table></figure>
+<h5 id="list相关的操作"><a href="#list相关的操作" class="headerlink" title="list相关的操作"></a>list相关的操作</h5><p>就是一个列表，按照插入的顺序进行排序    （左边称为头部，右边称为尾部）</p>
+<p>可以添加一个元素到list的头部或者尾部，这个list的底层实际上是个双向链表，对两端的操作性很高，通过索引取下标操作中间环节性能就差点。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、从左边（头部）插入数据</span></span><br><span class="line">lpush 键 值1 值2 值3</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、从右边插入数据</span></span><br><span class="line">rpush 键 值1 值2 值3</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3、从左边删除一个值，并得到删除的那个值	（会被删光，返回nil）</span></span><br><span class="line">lpop 键</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4、从右边删除一个值，并得到删除的那个值	（同上）</span></span><br><span class="line">rpop 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通常我们利用上面的四个做	队列 先进先出，先进后出</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5、按照索引获取元素	常用 0~-1来获取所有</span></span><br><span class="line">lrange 键 开始索引 结束索引</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6、获取指定位置索引的元素</span></span><br><span class="line">lindex 键 位置</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7、获取列表的长度</span></span><br><span class="line">llen 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">8、在指定的元素的前面后面插入新的元素</span></span><br><span class="line">linsert 键 before/after 值 新值</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">9、将列表中指定索引的元素进行替换</span></span><br><span class="line">lset 键 索引位置 新值</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">10、删除指定的值	n&gt;1 从左边 反之从右边	n=0 全删</span></span><br><span class="line">lrem 键 次数n 值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="set无序集合的相关操作"><a href="#set无序集合的相关操作" class="headerlink" title="set无序集合的相关操作"></a>set无序集合的相关操作</h5><ul>
+<li>和list类似</li>
+<li>区别是<ul>
+<li>不能有重复元素</li>
+<li>有交集，并集，差集</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、将元素加入到集合内，如果是已经存在的元素就忽略</span></span><br><span class="line">sadd 键 值1 值2 值3</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、获取集合的所有值</span></span><br><span class="line">smembers 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3、判断集合中有没有指定的元素	存在返回1 不存在返回0</span></span><br><span class="line">sismember 键 值</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4、获取集合内元素的个数</span></span><br><span class="line">scard 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5、删除集合内的元素</span></span><br><span class="line">srem 键 值1 值2 </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6、随机从集合内删除一个值</span></span><br><span class="line">spop 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7、随即从集合内去除n个值，但是在集合内仍旧保留</span></span><br><span class="line">srandmember 键 个数n</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">8、返回两个集合的交集</span></span><br><span class="line">sinter 集合1 集合2</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">9、返回并集</span></span><br><span class="line">sunion 集合1 集合2</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">10、返回差集	返回键1中不包含在键2中的元素</span></span><br><span class="line">sdiff 键1 键2</span><br></pre></td></tr></table></figure>
+<h5 id="zset有序集合"><a href="#zset有序集合" class="headerlink" title="zset有序集合"></a>zset有序集合</h5><p>有序集合和无序集合很相似，没有重复元素。但是有序集合的每一个元素都有一个权重值，根据这个权重值进行排序，元素唯一，但是权重可以重复。    可以用于排行榜的制作。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、添加元素</span></span><br><span class="line">zadd 键 权重数值1 值1 权重数值2 值2</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、返回集合中，指定范围的元素</span></span><br><span class="line">zrange 键 开始索引 结束索引</span><br><span class="line">zrange 键 0 -1 withscores # 返回所有的元素，并且携带了权重值。</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3、返回指定的权重范围内的元素</span></span><br><span class="line">zrangebyscore 键 小的权重 大的权重</span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">zrevrangebyscore 键 大的权重 小的权重	从大到小排</span></span><br><span class="line"><span class="meta prompt_">	</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4、删除指定的元素</span></span><br><span class="line">zrem 键 值</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5、统计指定权重范围内的元素数量</span></span><br><span class="line">zcount 键 权重区间起 权重区间末</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6、查询值的权重</span></span><br><span class="line">zrank 键 值</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7、给指定的元素增加权重</span></span><br><span class="line">zincrby 键 权重值 值	# 可以是负数</span><br></pre></td></tr></table></figure>
+<h5 id="hash相关操作"><a href="#hash相关操作" class="headerlink" title="hash相关操作"></a>hash相关操作</h5><p>类似于Python的字典</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、设置</span></span><br><span class="line">hset 键 字段1 值1 </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、获取</span></span><br><span class="line">hget 键 字段</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3、批量的设置</span></span><br><span class="line">hmset 键 字段1 值1 字段2 值2</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4、查看键中某个字段是否存在</span></span><br><span class="line">hexists 键 字段</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5、返回所有的字段</span></span><br><span class="line">hkeys 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6、返回所有的值</span></span><br><span class="line">hvals 键</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7、给一个字典进行自增</span></span><br><span class="line">hincrby 键 字段 数字</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">8、当这个字段不存在的时候就新增一个字段</span></span><br></pre></td></tr></table></figure>
+<p>拓展知识点：</p>
+<p><code>redis</code>是<code>cs</code>架构的，服务于python</p>
+<p>首先需要安装redis</p>
+<p>在pycharm中</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># pip install redis</span></span><br><span class="line"><span class="comment"># 直接链接，默认选择0号库</span></span><br><span class="line"><span class="comment"># 方式一：</span></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">redis.Redis(host=<span class="string">&#x27;Ip地址&#x27;</span>,password=<span class="string">&#x27;密码&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(conn)</span><br><span class="line"><span class="comment"># 方式2：</span></span><br><span class="line"><span class="comment"># 先创建连接池	max_connections=10 最大创建10个连接</span></span><br><span class="line">conn_pool = redis.ConnectionPool(host=<span class="string">&#x27;Ip地址&#x27;</span>,password=<span class="string">&#x27;密码&#x27;</span>,max_connections=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 从连接池中选一个	（可以减少性能消耗）</span></span><br><span class="line">redis_conn = redis.Redis(conn_pool)</span><br><span class="line">redis_conn.<span class="built_in">set</span>(<span class="string">&#x27;张三&#x27;</span>，<span class="string">&#x27;今天真开心&#x27;</span>)</span><br><span class="line">res = redis_conn.get(<span class="string">&#x27;张三&#x27;</span>).decode()</span><br><span class="line"><span class="built_in">print</span>(res)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://jadexl.github.io">Jade</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://jadexl.github.io/2023/03/21/Linux/">https://jadexl.github.io/2023/03/21/Linux/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jadexl.github.io" target="_blank">JadeのBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div><div class="post_share"><div class="social-share" data-image="/./img/%E5%86%9C%E7%94%B0.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/09/07/java/"><img class="next-cover" src="/./img/%E5%86%9C%E7%94%B0.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/09/07/java/" title="Java"><img class="cover" src="/./img/%E5%86%9C%E7%94%B0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-07</div><div class="title">Java</div></div></a></div><div><a href="/2022/09/07/matlab/" title="Matlab"><img class="cover" src="/./img/%E5%86%9C%E7%94%B0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-07</div><div class="title">Matlab</div></div></a></div><div><a href="/2022/09/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构"><img class="cover" src="/./img/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-07</div><div class="title">数据结构</div></div></a></div><div><a href="/2022/09/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" title="深度学习与无线通信"><img class="cover" src="/./img/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-07</div><div class="title">深度学习与无线通信</div></div></a></div><div><a href="/2022/09/07/%E7%94%B5%E7%A3%81%E5%9C%BA/" title="电磁场与电磁波"><img class="cover" src="/./img/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-07</div><div class="title">电磁场与电磁波</div></div></a></div><div><a href="/2022/09/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/" title="通信原理"><img class="cover" src="/./img/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-07</div><div class="title">通信原理</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jade</div><div class="author-info__description">当时只道是寻常</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://music.163.com/#/user/home?id=1660880441" target="_blank" title="Music"><i class="fa-sharp fa-solid fa-music"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E9%83%A8%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text">Linux部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">虚拟机软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0Linux%E5%BF%85%E9%A1%BB%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E4%BA%8B"><span class="toc-number">1.2.</span> <span class="toc-text">学习Linux必须要知道的事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E4%B8%8B%E9%87%8D%E8%A6%81%E7%9A%84%E7%9B%AE%E5%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">linux下重要的目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.</span> <span class="toc-text">查看目录的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ls%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.1.</span> <span class="toc-text">ls命令:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwd"><span class="toc-number">1.4.2.</span> <span class="toc-text">pwd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clear"><span class="toc-number">1.4.3.</span> <span class="toc-text">clear</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.5.</span> <span class="toc-text">切换目录的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%92%8C%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">1.6.</span> <span class="toc-text">绝对路径和相对路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.7.</span> <span class="toc-text">创建文件的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#touch%E5%91%BD%E4%BB%A4"><span class="toc-number">1.7.1.</span> <span class="toc-text">touch命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="toc-number">1.7.2.</span> <span class="toc-text">创建目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%A9%BA%E7%9B%AE%E5%BD%95"><span class="toc-number">1.7.3.</span> <span class="toc-text">删除空目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%91%BD%E4%BB%A4"><span class="toc-number">1.8.</span> <span class="toc-text">删除命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.</span> <span class="toc-text">复制文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cp%E5%91%BD%E4%BB%A4"><span class="toc-number">1.9.1.</span> <span class="toc-text">cp命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95"><span class="toc-number">1.10.</span> <span class="toc-text">移动文件或者目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.11.</span> <span class="toc-text">终端命令的格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B8%AE%E5%8A%A9%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.12.</span> <span class="toc-text">查看帮助的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E5%91%BD%E4%BB%A4"><span class="toc-number">1.13.</span> <span class="toc-text">重定向命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.14.</span> <span class="toc-text">查看文件的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E5%B1%95"><span class="toc-number">1.14.1.</span> <span class="toc-text">拓展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E5%91%BD%E4%BB%A4"><span class="toc-number">1.15.</span> <span class="toc-text">管道命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E7%9B%B8%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.16.</span> <span class="toc-text">链接相关的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4"><span class="toc-number">1.17.</span> <span class="toc-text">查找文件命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4"><span class="toc-number">1.18.</span> <span class="toc-text">压缩命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tar%E5%91%BD%E4%BB%A4"><span class="toc-number">1.18.1.</span> <span class="toc-text">tar命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%E7%BC%A9%E7%9B%B8%E5%85%B3"><span class="toc-number">1.18.2.</span> <span class="toc-text">解压缩相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zip%E5%92%8Cunzip%E5%91%BD%E4%BB%A4"><span class="toc-number">1.18.3.</span> <span class="toc-text">zip和unzip命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">Linux相关指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.</span> <span class="toc-text">获取管理员权限的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sudo%E5%91%BD%E4%BB%A4"><span class="toc-number">2.2.</span> <span class="toc-text">sudo命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#whoami%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">whoami命令的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exit-%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text">exit 命令的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#who%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.5.</span> <span class="toc-text">who命令的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#passwd%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.6.</span> <span class="toc-text">passwd命令的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#which%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">2.7.</span> <span class="toc-text">which命令的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA%E5%92%8C%E9%87%8D%E5%90%AF%E5%91%BD%E4%BB%A4"><span class="toc-number">2.8.</span> <span class="toc-text">关机和重启命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-number">2.9.</span> <span class="toc-text">创建用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7"><span class="toc-number">2.10.</span> <span class="toc-text">切换用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-number">2.11.</span> <span class="toc-text">删除用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">2.12.</span> <span class="toc-text">修改用户信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BB%84%E7%9B%B8%E5%85%B3"><span class="toc-number">2.13.</span> <span class="toc-text">用户组相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3"><span class="toc-number">2.14.</span> <span class="toc-text">文件权限相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84%E5%AE%97%E6%97%A8-%E4%B8%80%E5%88%87%E7%9A%86%E6%96%87%E4%BB%B6"><span class="toc-number">2.14.1.</span> <span class="toc-text">Linux的宗旨: 一切皆文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E8%A7%92%E8%89%B2"><span class="toc-number">2.14.2.</span> <span class="toc-text">linux都有哪些角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90%E6%9C%89%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">2.14.3.</span> <span class="toc-text">修改权限有两种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E6%AF%8D%E6%B3%95"><span class="toc-number">2.14.3.1.</span> <span class="toc-text">字母法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E6%B3%95"><span class="toc-number">2.14.3.2.</span> <span class="toc-text">数字法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-number">2.15.</span> <span class="toc-text">安装软件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">编辑文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vim%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">vim的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh%E5%91%BD%E4%BB%A4"><span class="toc-number">3.2.</span> <span class="toc-text">ssh命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#scp%E5%91%BD%E4%BB%A4"><span class="toc-number">3.3.</span> <span class="toc-text">scp命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis"><span class="toc-number">4.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nosql"><span class="toc-number">4.1.</span> <span class="toc-text">nosql</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E5%92%8C%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">4.1.1.</span> <span class="toc-text">关系型和非关系型的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E6%80%A7"><span class="toc-number">4.2.</span> <span class="toc-text">Redis都有哪些特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">4.3.</span> <span class="toc-text">redis常用的使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Redis"><span class="toc-number">4.4.</span> <span class="toc-text">使用Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Redis"><span class="toc-number">4.4.1.</span> <span class="toc-text">安装Redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="toc-number">4.4.2.</span> <span class="toc-text">配置相关信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8redis"><span class="toc-number">4.4.3.</span> <span class="toc-text">使用redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keys"><span class="toc-number">4.4.4.</span> <span class="toc-text">keys *</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.5.</span> <span class="toc-text">基本的数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#string%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.5.1.</span> <span class="toc-text">string类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%94%AE%E5%80%BC%E5%AF%B9"><span class="toc-number">4.5.1.1.</span> <span class="toc-text">设置键值对</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%92%8C%E9%94%AE%E7%9B%B8%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">4.5.2.</span> <span class="toc-text">和键相关的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E9%94%AE"><span class="toc-number">4.5.2.1.</span> <span class="toc-text">查看所有键</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%94%AE%E5%AF%B9%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.5.2.2.</span> <span class="toc-text">查看键对应的数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E9%94%AE"><span class="toc-number">4.5.2.3.</span> <span class="toc-text">删除键</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E9%94%AE%E7%9A%84%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="toc-number">4.5.2.4.</span> <span class="toc-text">设置一个键的过期时间</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.5.3.</span> <span class="toc-text">list数据类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-final-day%E2%80%94Redis-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-number">5.</span> <span class="toc-text">The final day—Redis 相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Redis"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">安装 Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9-Redis%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">5.0.0.2.</span> <span class="toc-text">对 Redis的配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%92%8Credis%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9B%B8%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">5.0.0.3.</span> <span class="toc-text">和redis服务端相关的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E5%BD%95Redis"><span class="toc-number">5.0.0.4.</span> <span class="toc-text">登录Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">5.0.0.5.</span> <span class="toc-text">Redis的基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-%E7%9A%84%E9%94%AE%E7%9B%B8%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">5.0.0.6.</span> <span class="toc-text">Redis 的键相关的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis2%E5%AF%B9%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">5.0.0.7.</span> <span class="toc-text">Redis2对数据类型的相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Redis%E8%80%B3%E6%9C%B5%E4%BA%94%E5%A4%A7%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.0.0.7.1.</span> <span class="toc-text">Redis耳朵五大基本数据类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#string%E7%9B%B8%E5%85%B3%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">5.0.0.7.2.</span> <span class="toc-text">string相关的操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#list%E7%9B%B8%E5%85%B3%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">5.0.0.7.3.</span> <span class="toc-text">list相关的操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#set%E6%97%A0%E5%BA%8F%E9%9B%86%E5%90%88%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">5.0.0.7.4.</span> <span class="toc-text">set无序集合的相关操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#zset%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88"><span class="toc-number">5.0.0.7.5.</span> <span class="toc-text">zset有序集合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hash%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">5.0.0.7.6.</span> <span class="toc-text">hash相关操作</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/21/Linux/" title="Linux"><img src="/./img/%E5%86%9C%E7%94%B0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux"/></a><div class="content"><a class="title" href="/2023/03/21/Linux/" title="Linux">Linux</a><time datetime="2023-03-21T02:30:49.000Z" title="发表于 2023-03-21 10:30:49">2023-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/07/java/" title="Java"><img src="/./img/%E5%86%9C%E7%94%B0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java"/></a><div class="content"><a class="title" href="/2022/09/07/java/" title="Java">Java</a><time datetime="2022-09-07T14:30:49.000Z" title="发表于 2022-09-07 22:30:49">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/07/matlab/" title="Matlab"><img src="/./img/%E5%86%9C%E7%94%B0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Matlab"/></a><div class="content"><a class="title" href="/2022/09/07/matlab/" title="Matlab">Matlab</a><time datetime="2022-09-07T14:30:49.000Z" title="发表于 2022-09-07 22:30:49">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/07/%E5%86%9C%E7%94%B0%E7%81%8C%E6%BA%89/" title="农田灌溉"><img src="/./img/%E5%86%9C%E7%94%B0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="农田灌溉"/></a><div class="content"><a class="title" href="/2022/09/07/%E5%86%9C%E7%94%B0%E7%81%8C%E6%BA%89/" title="农田灌溉">农田灌溉</a><time datetime="2022-09-07T14:30:49.000Z" title="发表于 2022-09-07 22:30:49">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/07/%E5%B9%B8%E8%BF%90%E6%95%B0/" title="幸运数问题"><img src="/./img/%E5%B9%B8%E8%BF%90%E6%95%B0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="幸运数问题"/></a><div class="content"><a class="title" href="/2022/09/07/%E5%B9%B8%E8%BF%90%E6%95%B0/" title="幸运数问题">幸运数问题</a><time datetime="2022-09-07T14:30:49.000Z" title="发表于 2022-09-07 22:30:49">2022-09-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Jade</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">“世事漫随流水,算来一梦浮生”</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
